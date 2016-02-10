@@ -1,0 +1,74 @@
+
+
+ <xs:schema xmlns:xs='http://www.w3.org/2001/XMLSchema'>
+
+    <xs:element name="employees">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Employee" minOccurs='1' maxOccurs='unbounded'/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Employee">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="firstName" minOccurs='0' maxOccurs='1'/>
+                <xs:element ref="lastName" minOccurs='0' maxOccurs='1'/>
+                <xs:element ref="age" minOccurs='0' maxOccurs='1'/>
+                <xs:element ref="position" minOccurs='0' maxOccurs='1'/>
+                <xs:element ref="employers" minOccurs='0' maxOccurs='1'/>
+                <xs:element ref="addresses" minOccurs='0' maxOccurs='1'/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="employers">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Employer" minOccurs='0' maxOccurs='unbounded'/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addresses">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="Address" minOccurs='0' maxOccurs='unbounded'/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Employer">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="name" minOccurs='0' maxOccurs='1'/>
+                <xs:element ref="startDate" minOccurs='0' maxOccurs='1'/>
+                <xs:element ref="endDate" minOccurs='0' maxOccurs='1'/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="Address">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="street" minOccurs='0' maxOccurs='1'/>
+                <xs:element ref="streetNo" minOccurs='0' maxOccurs='1'/>
+                <xs:element ref="section" minOccurs='0' maxOccurs='1'/>
+                <xs:element ref="city" minOccurs='0' maxOccurs='1'/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="firstName" type='xs:string'/>
+    <xs:element name="lastName" type='xs:string'/>
+    <xs:element name="age" type='xs:int'/>
+    <xs:element name="position" type='xs:string'/>
+    <xs:element name="name" type='xs:string'/>
+    <xs:element name="startDate" type='xs:date'/>
+    <xs:element name="endDate" type='xs:date'/>
+    <xs:element name="street" type='xs:string'/>
+    <xs:element name="streetNo" type='xs:int'/>
+    <xs:element name="section" type='xs:string'/>
+    <xs:element name="city" type='xs:string'/>
+ </xs:schema>

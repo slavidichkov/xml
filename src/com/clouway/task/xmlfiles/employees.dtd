@@ -1,0 +1,18 @@
+<!ELEMENT employees (Employee+)>
+        <!ELEMENT Employee (firstName, lastName, age, position, employers+, addresses+)>
+        <!ATTLIST Employee ID CDATA #REQUIRED>
+            <!ELEMENT firstName (#PCDATA)>
+            <!ELEMENT lastName (#PCDATA)>
+            <!ELEMENT age (#PCDATA)>
+            <!ELEMENT position (#PCDATA)>
+            <!ELEMENT employers (Employer+)>
+                <!ELEMENT Employer (name, startDate, endDate)>
+                    <!ELEMENT name (#PCDATA)>
+                    <!ELEMENT startDate (#PCDATA)>
+                    <!ELEMENT endDate (#PCDATA)>
+            <!ELEMENT addresses (Address+)>
+                <!ELEMENT Address (street, streetNo, section, city)>
+                    <!ELEMENT street (#PCDATA)>
+                    <!ELEMENT streetNo (#PCDATA)>
+                    <!ELEMENT section (#PCDATA)>
+                    <!ELEMENT city (#PCDATA)>

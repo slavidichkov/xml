@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE employees SYSTEM "/home/clouway/workspaces/idea/xml/src/com/clouway/task/xmlfiles/employees.dtd">
+<employees>
+    <Employee ID="1">
+        <firstName>Ivan</firstName>
+        <lastName>Ivanov</lastName>
+        <age>23</age>
+        <position>mechanic</position>
+        <employers>
+            <Employer>
+                <name>Stefan</name>
+                <startDate>21-10-2010</startDate>
+                <endDate>23-4-2012</endDate>
+            </Employer>
+            <Employer>
+                <name>Ivan</name>
+                <startDate>21-10-2010</startDate>
+                <endDate>23-4-2012</endDate>
+            </Employer>
+        </employers>
+        <addresses>
+            <Address>
+                <street>Gabrovski</street>
+                <streetNo>43</streetNo>
+                <section>A</section>
+                <city>Veliko Tyrnovo</city>
+            </Address>
+        </addresses>
+    </Employee>
+    <Employee ID="2">
+        <firstName>Kristiqn</firstName>
+        <lastName>Petkov</lastName>
+        <age>24</age>
+        <position>programmer</position>
+        <employers>
+            <Employer>
+                <name>Nikolai</name>
+                <startDate>5-4-2015</startDate>
+                <endDate>13-1-2016</endDate>
+            </Employer>
+            <Employer>
+                <name>Ivailo</name>
+                <startDate>5-4-2015</startDate>
+                <endDate>13-1-2016</endDate>
+            </Employer>
+        </employers>
+        <addresses>
+            <Address>
+                <street>pultava</street>
+                <streetNo>12</streetNo>
+                <section>B</section>
+                <city>Veliko Tyrnovo</city>
+            </Address>
+            <Address>
+                <street>pultava</street>
+                <streetNo>12</streetNo>
+                <section>B</section>
+                <city>Veliko Tyrnovo</city>
+            </Address>
+        </addresses>
+    </Employee>
+</employees>
