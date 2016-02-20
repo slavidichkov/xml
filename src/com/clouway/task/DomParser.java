@@ -57,7 +57,7 @@ public class DomParser<T> implements XmlParser<T> {
     }
 
     private List<Object> parse(NodeList childNodes, Class aClass) {
-        List<Object> instanceList = new ArrayList<>();
+        List<Object> instanceList = new ArrayList();
         for (int j = 0; j < childNodes.getLength(); j++) {
             Node nNode = childNodes.item(j);
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
@@ -122,7 +122,7 @@ public class DomParser<T> implements XmlParser<T> {
     }
 
     private List<Object> createChildesList(NodeList nodeList, Class aClass, int parentsNumber) {
-        List<Object> instanceList = new ArrayList<>();
+        List<Object> instanceList = new ArrayList();
         Node nNode = nodeList.item(parentsNumber);
         Node node = nNode.getFirstChild();
         Object instance = null;

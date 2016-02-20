@@ -62,7 +62,7 @@ public class SAXHandler<T> extends DefaultHandler {
                     ParameterizedType stringListType = (ParameterizedType) field.getGenericType();
                     Class<?> stringListClass = (Class<?>) stringListType.getActualTypeArguments()[0];
                     try {
-                        objectsListOfT=new ArrayList<>();
+                        objectsListOfT=new ArrayList();
                         subColectionClass = Class.forName(stringListClass.getName());
                     } catch (ClassNotFoundException e) {
                         e.printStackTrace();

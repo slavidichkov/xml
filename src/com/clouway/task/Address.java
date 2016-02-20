@@ -27,14 +27,4 @@ public class Address {
     public String getCity() {
         return city;
     }
-
-    @Override
-    public String toString() {
-        return "Address{" +
-                "street='" + street + '\'' +
-                ", streetNo=" + streetNo +
-                ", section='" + section + '\'' +
-                ", city='" + city + '\'' +
-                '}';
-    }
 }

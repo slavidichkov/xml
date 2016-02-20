@@ -20,18 +20,6 @@ public class Employee {
         this.age = age;
     }
 
-    @Override
-    public String toString() {
-        return "Employee{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", position='" + position + '\'' +
-                ", age=" + age +
-                ", employers=" + employers +
-                ", addresses=" + addresses +
-                '}';
-    }
-
     public Employee() {
     }
 
