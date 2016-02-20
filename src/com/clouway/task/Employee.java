@@ -35,23 +35,6 @@ public class Employee {
         return addresses.size();
     }
 
-    public void printContentOfEmployersList() {
-       for (int i=0;i<employers.size();i++){
-           System.out.println(employers.get(i).getName());
-//           System.out.println(employers.get(i).getStartDate());
-//           System.out.println(employers.get(i).getEndDate());
-           System.out.println();
-       }
-    }
-    public void printContentOfAddressesList() {
-        for (int i=0;i<addresses.size();i++){
-            System.out.println(addresses.get(i).getStreet());
-            System.out.println(addresses.get(i).getStreetNo());
-            System.out.println(addresses.get(i).getSection());
-            System.out.println(addresses.get(i).getCity());
-            System.out.println();
-        }
-    }
     public String getFirstName() {
         return firstName;
     }
