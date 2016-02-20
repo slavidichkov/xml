@@ -30,12 +30,7 @@ public class DomParser<T> implements XmlParser<T> {
     private Document doc = null;
 
     public void setValidating(boolean validating){
-        if (validating){
-            dbFactory.setValidating(true);
-        }else {
-            dbFactory.setValidating(false);
-        }
-
+        dbFactory.setValidating(validating);
     }
 
     @Override
