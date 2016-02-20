@@ -25,9 +25,13 @@ import java.util.List;
  */
 public class DomParser<T> implements XmlParser<T> {
     private InputStream inputStream;
-    private DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+    private DocumentBuilderFactory dbFactory;
     private DocumentBuilder dBuilder = null;
     private Document doc = null;
+
+    public DomParser(){
+        dbFactory = DocumentBuilderFactory.newInstance();
+    }
 
     public void setValidating(boolean validating){
         dbFactory.setValidating(validating);
