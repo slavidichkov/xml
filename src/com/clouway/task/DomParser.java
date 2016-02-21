@@ -83,7 +83,7 @@ public class DomParser<T> implements XmlParser<T> {
             } else if (Collection.class.isAssignableFrom(field.getType())) {
                 NodeList nodeList = doc.getElementsByTagName(field.getName());
                 Class clazz=getCollectionGenericType(field);
-                field.set(instance, createChildesList(nodeList, clazz, parentsNumber));
+                field.set(instance, createChildren(nodeList, clazz, parentsNumber));
             }else{
                 field.set(instance, createObject(field.getType(),element,parentsNumber));
             }
@@ -120,7 +120,7 @@ public class DomParser<T> implements XmlParser<T> {
         return instance;
     }
 
-    private List<Object> createChildesList(NodeList nodeList, Class aClass, int parentsNumber) {
+    private List<Object> createChildren(NodeList nodeList, Class aClass, int parentsNumber) {
         List<Object> instanceList = new ArrayList();
         Node nNode = nodeList.item(parentsNumber);
         Node node = nNode.getFirstChild();
