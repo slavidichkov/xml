@@ -56,18 +56,18 @@ public class DomParser<T> implements XmlParser<T> {
     }
 
     private List<Object> parse(NodeList childNodes, Class aClass) {
-        List<Object> instanceList = new ArrayList();
+        List<Object> instances = new ArrayList();
         for (int j = 0; j < childNodes.getLength(); j++) {
             Node nNode = childNodes.item(j);
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element eElement = (Element) nNode;
                 Object instance = null;
                instance=createObject(aClass,eElement,j);
-                instanceList.add(instance);
+                instances.add(instance);
             }
         }
 
-        return instanceList;
+        return instances;
     }
 
     private void setField(Field field, Object instance, Element element, int parentsNumber) {
@@ -121,7 +121,7 @@ public class DomParser<T> implements XmlParser<T> {
     }
 
     private List<Object> createChildren(NodeList nodeList, Class aClass, int parentsNumber) {
-        List<Object> instanceList = new ArrayList();
+        List<Object> instances = new ArrayList();
         Node nNode = nodeList.item(parentsNumber);
         Node node = nNode.getFirstChild();
         Object instance = null;
@@ -129,11 +129,11 @@ public class DomParser<T> implements XmlParser<T> {
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element eElement = (Element) node;
                 instance=createObject(aClass,eElement,parentsNumber);
-                instanceList.add(instance);
+                instances.add(instance);
             }
             node = node.getNextSibling();
         }
-        return instanceList;
+        return instances;
     }
 
     private String getValue(Field field, Element element) {
