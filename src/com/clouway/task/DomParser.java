@@ -74,11 +74,11 @@ public class DomParser<T> implements XmlParser<T> {
         field.setAccessible(true);
         try {
             if (field.getType().equals(String.class)) {
-                field.set(instance, getValue(field, element));
+                field.set(instance, getElementValue(field, element));
             }else if (field.getType().equals(int.class)) {
-                field.setInt(instance, new Integer(getValue(field, element)));
+                field.setInt(instance, new Integer(getElementValue(field, element)));
             }else if (field.getType().equals(Date.class)) {
-                Date date = parseDate(getValue(field, element));
+                Date date = parseDate(getElementValue(field, element));
                 field.set(instance, date);
             } else if (Collection.class.isAssignableFrom(field.getType())) {
                 NodeList nodeList = doc.getElementsByTagName(field.getName());
@@ -136,7 +136,7 @@ public class DomParser<T> implements XmlParser<T> {
         return instances;
     }
 
-    private String getValue(Field field, Element element) {
+    private String getElementValue(Field field, Element element) {
         return element.getElementsByTagName(field.getName()).item(0).getTextContent();
     }
 
