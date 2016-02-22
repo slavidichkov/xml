@@ -6,11 +6,15 @@ import org.junit.Test;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertThat;
 
 /**
  * @author Slavi Dichkov (slavidichkof@gmail.com)
@@ -84,24 +88,31 @@ public class DomParserTest {
     }
 
     @Test
-    public void pretendSameFirstNameOfInstance() {
+    public void pretendThatParsedInstancesAreTheSame() {
         DomParser<Employee> employeeDomParser = new DomParser();
         List<Employee> employees = employeeDomParser.parse(Employee.class, inputStream);
-        assertThat(employees.get(0).getFirstName(),is(equalTo("Ivan")));
+        assertThat(employees.get(0).getLastName(),is(equalTo("Ivanov")));
+        assertThat(employees.get(0).getPosition(),is(equalTo("mechanic")));
+        assertThat(employees.get(0).getAge(),is(equalTo(23)));
+
+        List<Employer> employers = new ArrayList();
+        employers.add(new Employer("Stefan", getDate("2010-10-21"),getDate("2012-4-23")));
+        employers.add(new Employer("Ivan",  getDate("2010-10-21"),getDate("2012-4-23")));
+        assertThat(employees.get(0).getEmployers(),is(equalTo(employers)));
+
+        List<Address> addresses = new ArrayList();
+        addresses.add(new Address("Gabrovski",43,"A","Veliko Tyrnovo"));
+        assertThat(employees.get(0).getAddresses(),is(equalTo(addresses)));
     }
 
-    @Test
-    public void pretendSameNumberOfInstancesInListField() {
-        DomParser<Employee> employeeDomParser = new DomParser();
-        List<Employee> employees = employeeDomParser.parse(Employee.class, inputStream);
-        assertThat(employees.get(0).employerListSize(), is(equalTo(2)));
-    }
-
-    @Test
-    public void pretendSameNumberOfInstances() {
-        DomParser<Employee> employeeDomParser = new DomParser();
-        List<Employee> employees = employeeDomParser.parse(Employee.class, inputStream);
-        assertThat(employees.size(), is(equalTo(2)));
+    private Date getDate(String date){
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            return dateFormat.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

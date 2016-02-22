@@ -104,9 +104,9 @@ public class DomParser<T> implements XmlParser<T> {
         return clazz;
     }
 
-    private Object createObject(Class aClass, Element element,int parentsNumber){
+    private <E>E createObject(Class<E> aClass, Element element,int parentsNumber){
         Field[] fields=aClass.getDeclaredFields();
-        Object instance=null;
+        E instance=null;
         try {
             instance=aClass.newInstance();
         } catch (InstantiationException e) {
@@ -120,11 +120,11 @@ public class DomParser<T> implements XmlParser<T> {
         return instance;
     }
 
-    private List<Object> createChildren(NodeList nodeList, Class aClass, int parentsNumber) {
-        List<Object> instances = new ArrayList();
+    private <E>List<E> createChildren(NodeList nodeList, Class<E> aClass, int parentsNumber) {
+        List<E> instances = new ArrayList();
         Node nNode = nodeList.item(parentsNumber);
         Node node = nNode.getFirstChild();
-        Object instance = null;
+        E instance = null;
         while (node != null) {
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element eElement = (Element) node;

@@ -1,10 +1,7 @@
 *.class
 out/
 src/com/clouway/practice/
-src/com/clouway/practice/*
 
-.idea/workspace.xml
-.idea/vcs.xml
 .idea/
 xml.iml
 # Mobile Tools for Java (J2ME)

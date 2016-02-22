@@ -1,11 +1,16 @@
 package com.clouway.task;
 
 import org.hamcrest.CoreMatchers;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -16,8 +21,8 @@ import static org.hamcrest.Matchers.is;
  * @author Slavi Dichkov (slavidichkof@gmail.com)
  */
 public class SAXParserTest {
-    InputStream  inputStream=null;
-    String xmlFile="<employees>" +
+    InputStream inputStream = null;
+    String xmlFile = "<employees>" +
             "    <Employee>" +
             "        <firstName>Ivan</firstName>" +
             "        <lastName>Ivanov</lastName>" +
@@ -79,31 +84,35 @@ public class SAXParserTest {
             "</employees>";
 
     @Before
-    public void setUp(){
-        inputStream=new ByteArrayInputStream(xmlFile.getBytes(StandardCharsets.UTF_8));
+    public void setUp() {
+        inputStream = new ByteArrayInputStream(xmlFile.getBytes(StandardCharsets.UTF_8));
     }
 
     @Test
-    public void pretendSameNumberOfInstances() {
-        SaxParser<Employee> saxParser=new SaxParser();
-        List<Employee> employeeList;
-        employeeList=saxParser.parse(Employee.class,inputStream);
-        assertThat(employeeList.size(),is(equalTo(2)));
+    public void pretendThatParsedInstancesAreTheSame() {
+        SaxParser<Employee> saxParser = new SaxParser();
+        List<Employee> employees = saxParser.parse(Employee.class, inputStream);
+        Assert.assertThat(employees.get(0).getLastName(), CoreMatchers.is(CoreMatchers.equalTo("Ivanov")));
+        Assert.assertThat(employees.get(0).getPosition(), CoreMatchers.is(CoreMatchers.equalTo("mechanic")));
+        Assert.assertThat(employees.get(0).getAge(), CoreMatchers.is(CoreMatchers.equalTo(23)));
+
+        List<Employer> employers = new ArrayList();
+        employers.add(new Employer("Stefan", getDate("2010-10-21"), getDate("2012-4-23")));
+        employers.add(new Employer("Ivan", getDate("2010-10-21"), getDate("2012-4-23")));
+        Assert.assertThat(employees.get(0).getEmployers(), CoreMatchers.is(CoreMatchers.equalTo(employers)));
+
+        List<Address> addresses = new ArrayList();
+        addresses.add(new Address("Gabrovski", 43, "A", "Veliko Tyrnovo"));
+        Assert.assertThat(employees.get(0).getAddresses(), CoreMatchers.is(CoreMatchers.equalTo(addresses)));
     }
 
-    @Test
-    public void pretendSameFirstNameOfInstance() {
-        SaxParser<Employee> saxParser=new SaxParser();
-        List<Employee> employeeList;
-        employeeList=saxParser.parse(Employee.class,inputStream);
-        assertThat(employeeList.get(0).getFirstName(),is(equalTo("Ivan")));
-    }
-
-    @Test
-    public void pretendSameNumberOfInstancesInListField() {
-        SaxParser<Employee> saxParser=new SaxParser();
-        List<Employee> employeeList;
-        employeeList=saxParser.parse(Employee.class,inputStream);
-        assertThat(employeeList.get(0).employerListSize(),is(equalTo(2)));
+    private Date getDate(String date) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            return dateFormat.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }

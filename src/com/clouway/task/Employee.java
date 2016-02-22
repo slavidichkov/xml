@@ -13,6 +13,9 @@ public class Employee {
     private List<Employer> employers;
     private List<Address> addresses;
 
+    public Employee() {
+    }
+
     public Employee(String firstName, String lastName, String position, int age) {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -20,19 +23,16 @@ public class Employee {
         this.age = age;
     }
 
-    public Employee() {
+    public List<Employer> getEmployers() {
+        return employers;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
     }
 
     public int getAge() {
         return age;
-    }
-
-    public int employerListSize() {
-        return employers.size();
-    }
-
-    public int addressesListSize() {
-        return addresses.size();
     }
 
     public String getFirstName() {
@@ -45,5 +45,32 @@ public class Employee {
 
     public String getPosition() {
         return position;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Employee employee = (Employee) o;
+
+        if (age != employee.age) return false;
+        if (firstName != null ? !firstName.equals(employee.firstName) : employee.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(employee.lastName) : employee.lastName != null) return false;
+        if (position != null ? !position.equals(employee.position) : employee.position != null) return false;
+        if (employers != null ? !employers.equals(employee.employers) : employee.employers != null) return false;
+        return !(addresses != null ? !addresses.equals(employee.addresses) : employee.addresses != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = firstName != null ? firstName.hashCode() : 0;
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (position != null ? position.hashCode() : 0);
+        result = 31 * result + age;
+        result = 31 * result + (employers != null ? employers.hashCode() : 0);
+        result = 31 * result + (addresses != null ? addresses.hashCode() : 0);
+        return result;
     }
 }
