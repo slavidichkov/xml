@@ -85,21 +85,21 @@ public class DomParserTest {
 
     @Test
     public void pretendSameFirstNameOfInstance() {
-        DomParser<Employee> employeeDomParser = new DomParser<>();
+        DomParser<Employee> employeeDomParser = new DomParser();
         List<Employee> employees = employeeDomParser.parse(Employee.class, inputStream);
         assertThat(employees.get(0).getFirstName(),is(equalTo("Ivan")));
     }
 
     @Test
     public void pretendSameNumberOfInstancesInListField() {
-        DomParser<Employee> employeeDomParser = new DomParser<>();
+        DomParser<Employee> employeeDomParser = new DomParser();
         List<Employee> employees = employeeDomParser.parse(Employee.class, inputStream);
         assertThat(employees.get(0).employerListSize(), is(equalTo(2)));
     }
 
     @Test
     public void pretendSameNumberOfInstances() {
-        DomParser<Employee> employeeDomParser = new DomParser<>();
+        DomParser<Employee> employeeDomParser = new DomParser();
         List<Employee> employees = employeeDomParser.parse(Employee.class, inputStream);
         assertThat(employees.size(), is(equalTo(2)));
     }

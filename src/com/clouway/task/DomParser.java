@@ -52,17 +52,17 @@ public class DomParser<T> implements XmlParser<T> {
         }
         NodeList nList = doc.getElementsByTagName(aClass.getSimpleName());
 
-        return (List<T>) parse(nList, aClass);
+        return parse(nList, aClass);
     }
 
-    private List<Object> parse(NodeList childNodes, Class aClass) {
-        List<Object> instances = new ArrayList();
+    private List<T> parse(NodeList childNodes, Class aClass) {
+        List<T> instances = new ArrayList();
         for (int j = 0; j < childNodes.getLength(); j++) {
             Node nNode = childNodes.item(j);
             if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                 Element eElement = (Element) nNode;
-                Object instance = null;
-               instance=createObject(aClass,eElement,j);
+                T instance = null;
+                instance= (T) createObject(aClass,eElement,j);
                 instances.add(instance);
             }
         }

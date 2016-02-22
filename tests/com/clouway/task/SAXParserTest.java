@@ -85,7 +85,7 @@ public class SAXParserTest {
 
     @Test
     public void pretendSameNumberOfInstances() {
-        SaxParser<Employee> saxParser=new SaxParser<>();
+        SaxParser<Employee> saxParser=new SaxParser();
         List<Employee> employeeList;
         employeeList=saxParser.parse(Employee.class,inputStream);
         assertThat(employeeList.size(),is(equalTo(2)));
@@ -93,7 +93,7 @@ public class SAXParserTest {
 
     @Test
     public void pretendSameFirstNameOfInstance() {
-        SaxParser<Employee> saxParser=new SaxParser<>();
+        SaxParser<Employee> saxParser=new SaxParser();
         List<Employee> employeeList;
         employeeList=saxParser.parse(Employee.class,inputStream);
         assertThat(employeeList.get(0).getFirstName(),is(equalTo("Ivan")));
@@ -101,7 +101,7 @@ public class SAXParserTest {
 
     @Test
     public void pretendSameNumberOfInstancesInListField() {
-        SaxParser<Employee> saxParser=new SaxParser<>();
+        SaxParser<Employee> saxParser=new SaxParser();
         List<Employee> employeeList;
         employeeList=saxParser.parse(Employee.class,inputStream);
         assertThat(employeeList.get(0).employerListSize(),is(equalTo(2)));

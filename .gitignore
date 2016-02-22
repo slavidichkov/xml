@@ -5,6 +5,7 @@ src/com/clouway/practice/*
 
 .idea/workspace.xml
 .idea/vcs.xml
+xml.iml
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
