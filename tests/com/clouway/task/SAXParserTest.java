@@ -90,7 +90,7 @@ public class SAXParserTest {
 
     @Test
     public void pretendThatParsedInstancesAreTheSame() {
-        SaxParser<Employee> saxParser = new SaxParser();
+        SaxParser saxParser = new SaxParser();
         List<Employee> employees = saxParser.parse(Employee.class, inputStream);
         Assert.assertThat(employees.get(0).getLastName(), CoreMatchers.is(CoreMatchers.equalTo("Ivanov")));
         Assert.assertThat(employees.get(0).getPosition(), CoreMatchers.is(CoreMatchers.equalTo("mechanic")));

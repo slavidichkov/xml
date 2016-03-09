@@ -89,7 +89,7 @@ public class DomParserTest {
 
     @Test
     public void pretendThatParsedInstancesAreTheSame() {
-        DomParser<Employee> employeeDomParser = new DomParser();
+        DomParser employeeDomParser = new DomParser();
         List<Employee> employees = employeeDomParser.parse(Employee.class, inputStream);
         assertThat(employees.get(0).getLastName(),is(equalTo("Ivanov")));
         assertThat(employees.get(0).getPosition(),is(equalTo("mechanic")));

@@ -23,7 +23,7 @@ import java.util.List;
 /**
  * @author Slavi Dichkov (slavidichkof@gmail.com)
  */
-public class DomParser<T> implements XmlParser<T> {
+public class DomParser implements XmlParser {
     private InputStream inputStream;
     private DocumentBuilderFactory dbFactory;
     private DocumentBuilder dBuilder = null;
@@ -38,7 +38,7 @@ public class DomParser<T> implements XmlParser<T> {
     }
 
     @Override
-    public List<T> parse(Class<T> aClass, InputStream inputStream) {
+    public <T>List<T> parse(Class<T> aClass, InputStream inputStream) {
         this.inputStream = inputStream;
         try {
             dBuilder = dbFactory.newDocumentBuilder();
@@ -55,7 +55,7 @@ public class DomParser<T> implements XmlParser<T> {
         return parse(nList, aClass);
     }
 
-    private List<T> parse(NodeList childNodes, Class aClass) {
+    private <T>List<T> parse(NodeList childNodes, Class aClass) {
         List<T> instances = new ArrayList();
         for (int j = 0; j < childNodes.getLength(); j++) {
             Node nNode = childNodes.item(j);
